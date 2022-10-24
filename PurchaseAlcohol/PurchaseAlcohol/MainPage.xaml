@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PurchaseAlcohol.MainPage">
+
+    <StackLayout>
+        <Frame BackgroundColor="#2196F3" Padding="24" CornerRadius="0">
+            <Label Text="When can I leagally buy Alcohol?" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
+        </Frame>
+        <Label Text="" FontSize="24" x:Name="Lbl_Years" Padding="30,0,30,0" TextColor="DeepPink"/>
+        <Label Text="Select Your Birthday:" Padding="15,0,15,0" />
+        <DatePicker x:Name="pickedAge"
+                    Format="D"
+                    Margin="30, 0, 0, 30"/>
+        <Label Text="Or enter your age in years:" Padding="15,0,15,0"/>
+        <Editor x:Name="Inp_age" 
+            Placeholder="Please enter your age in years" 
+            PlaceholderColor="Black"
+            Margin="30,0,30,0"/>
+        <Button Text="Find Out Now" 
+            x:Name="Btn_Age" Clicked="Handle_Clicked" />
+    </StackLayout>
+
+</ContentPage>
