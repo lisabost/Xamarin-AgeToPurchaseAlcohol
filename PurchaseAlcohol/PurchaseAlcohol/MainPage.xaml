@@ -7,16 +7,30 @@
         <Frame BackgroundColor="#2196F3" Padding="24" CornerRadius="0">
             <Label Text="When can I leagally buy Alcohol?" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
         </Frame>
-        <Label Text="" FontSize="24" x:Name="Lbl_Years" Padding="30,0,30,0" TextColor="DeepPink"/>
+        <Label Text="" FontSize="18" x:Name="Lbl_Years" Padding="30,0,30,0" TextColor="DeepPink"/>
         <Label Text="Select Your Birthday:" Padding="15,0,15,0" />
         <DatePicker x:Name="pickedAge"
                     Format="D"
-                    Margin="30, 0, 0, 30"/>
+                    Margin="30, 0, 30, 0"/>
         <Label Text="Or enter your age in years:" Padding="15,0,15,0"/>
         <Editor x:Name="Inp_age" 
             Placeholder="Please enter your age in years" 
             PlaceholderColor="Black"
             Margin="30,0,30,0"/>
+        <Label Text="Select the country you live in:" Padding="15,0,15,0"/>
+        <Picker x:Name="picker"
+        Title="Select your country"
+        TitleColor="Black"
+        Margin="30,0,30,0">
+            <Picker.ItemsSource>
+                <x:Array Type="{x:Type x:String}">
+                    <x:String>United States</x:String>
+                    <x:String>Japan</x:String>
+                    <x:String>France</x:String>
+                    <x:String>United Kingdom</x:String>
+                </x:Array>
+            </Picker.ItemsSource>
+        </Picker>
         <Button Text="Find Out Now" 
             x:Name="Btn_Age" Clicked="Handle_Clicked" />
     </StackLayout>

@@ -15,19 +15,31 @@ namespace PurchaseAlcohol
             InitializeComponent();
         }
 
-        DatePicker datePicker = new DatePicker
+        void Handle_Clicked(object sender, EventArgs e)
         {
-            MinimumDate = new DateTime(1920, 1, 1),
-            MaximumDate = new DateTime(2023, 12, 31),
-            Date = new DateTime(2018, 6, 21)
-        };
-
-        void Handle_Clicked(object sender, System.EventArgs e)
-        {
+            int legalAge = 21;
             var today = DateTime.Today;
             var birthdate = pickedAge.Date;
 
             var age = today.Year - birthdate.Year;
+
+            var countryName = picker.SelectedItem;
+            Console.WriteLine(countryName);
+            switch(countryName)
+            {
+                case "United States":
+                    legalAge = 21;
+                    break;
+                case "Japan":
+                    legalAge = 20;
+                    break;
+                case "France":
+                    legalAge = 18;
+                    break;
+                case "United Kingdom":
+                    legalAge = 18;
+                    break;
+            }
 
             if (birthdate.Date > today.AddYears(-age)) age--;
 
@@ -41,21 +53,21 @@ namespace PurchaseAlcohol
             {
                 Lbl_Years.Text = "You must enter a birthdate or an age to find out when you can legally buy alcohol";
             }
-            else if(age >= 21)
+            else if(age >= legalAge)
             {
-                Lbl_Years.Text = $"You are {age} years old. Congratulations you can legally buy alcohol";
+                Lbl_Years.Text = $"You are {age} years old. The legal age to buy alcohol in {countryName} is {legalAge}. Congratulations you can legally buy alcohol";
                 Inp_age.Text = "";
                 pickedAge.Date = today;
+                picker.SelectedIndex = 0;
             }
             else
             {
-                int waiting = 21 - age;
-                Lbl_Years.Text = $"You are {age} years old. You must wait {waiting} years before you can legally buy alcohol. ";
+                int waiting = legalAge - age;
+                Lbl_Years.Text = $"You are {age} years old. The legal age to buy alcohol in {countryName} is {legalAge}. You must wait {waiting} years before you can legally buy alcohol. ";
                 Inp_age.Text = "";
                 pickedAge.Date = today;
+                picker.SelectedIndex = 0;
             }
-
-            
         }
     }
 }
